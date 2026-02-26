@@ -1,0 +1,114 @@
+/* 1. CORE LAYOUT & THEME */
+:root {
+    --elite-gold: #fbbf24;
+    --elite-gold-dark: #d97706;
+    --elite-black: #050505;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--elite-black);
+    color: white;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+}
+
+/* 2. GLASSMORPHISM UI */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* 3. CENTERED MODAL LOGIC (Your Specific Requirement) */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center; /* Vertical Center */
+    justify-content: center; /* Horizontal Center */
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 9999;
+    padding: 1.5rem;
+}
+
+/* Modal Appear Animation */
+.modal-overlay:not(.hidden) > div {
+    animation: modalScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalScale {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* 4. ELITE BUTTONS & GRADIENTS */
+.gold-gradient {
+    background: linear-gradient(135deg, var(--elite-gold) 0%, var(--elite-gold-dark) 100%);
+    box-shadow: 0 10px 20px -10px rgba(251, 191, 36, 0.5);
+}
+
+.gold-gradient:active {
+    transform: scale(0.96);
+    filter: brightness(0.9);
+}
+
+/* 5. VIDEO INTERFACE & EFFECTS */
+#player-stage {
+    position: relative;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 0 40px -10px rgba(0, 0, 0, 1);
+}
+
+.video-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 100px rgba(251, 191, 36, 0.05);
+}
+
+/* 6. STATUS INDICATORS */
+.status-live {
+    background-color: #ef4444; /* Red */
+    box-shadow: 0 0 12px #ef4444;
+}
+
+.status-offline {
+    background-color: #4b5563; /* Gray */
+}
+
+/* 7. CUSTOM SCROLLBAR (Because Elite) */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--elite-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--elite-gold);
+}
+
+/* 8. MOBILE OPTIMIZATIONS */
+@media (max-width: 768px) {
+    .glass-card {
+        border-radius: 2rem;
+    }
+    
+    h1 {
+        font-size: 1.25rem !important;
+    }
+}
